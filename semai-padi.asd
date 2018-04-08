@@ -7,4 +7,4 @@
   :depends-on (:hunchentoot
                :cl-fad)
   :components ((:file "packages")
-               (:file "web")))
+               (:file "web" :depends-on ("packages"))))

@@ -1,10 +1,10 @@
 (in-package #:semai-padi)
 
 (defvar *web-server* nil)
-(defvar *system-path* (component-pathname (find-system "semai-padi")))
+(defvar *project-path* (component-pathname (find-system "semai-padi")))
 
 (defun find-document-root ()
-  (merge-pathnames-as-directory *system-path* #p"www/"))
+  (merge-pathnames-as-directory *project-path* #p"www/"))
 
 (defun start-web (&key (port 3000))
   (setf *web-server* (make-instance 'easy-acceptor
