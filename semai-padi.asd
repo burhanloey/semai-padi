@@ -5,6 +5,7 @@
   :version "0.0.1"
   :license "GPL v3"
   :depends-on (:hunchentoot
-               :cl-fad)
+               :ironclad
+               :uiop)
   :components ((:file "packages")
                (:file "web" :depends-on ("packages"))))
