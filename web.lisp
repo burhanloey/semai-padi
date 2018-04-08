@@ -23,8 +23,8 @@
 
 (defun download-file (filename &key (dirname (create-random-dirname)))
   (ensure-directories-exist
-   (merge-pathnames +download-path+
-                    (format nil "~a/~a/" dirname filename))))
+   (merge-pathnames (format nil "~a/~a/" dirname filename)
+                    +download-path+)))
 
 (defun remove-dead-processes ()
   "When the process is no longer alive, remove it from the hash table."
