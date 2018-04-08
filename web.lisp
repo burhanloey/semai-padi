@@ -23,7 +23,7 @@
 
 (defun download-file (filename &key (dirname (create-random-dirname)))
   (ensure-directories-exist
-   (merge-pathnames (format nil "~a/~a/" dirname filename)
+   (merge-pathnames (format nil "~a/~a" dirname filename)
                     +download-path+)))
 
 (defun remove-dead-processes ()
