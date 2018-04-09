@@ -6,6 +6,7 @@
   :license "GPL v3"
   :depends-on (:hunchentoot
                :ironclad
-               :uiop)
+               :uiop
+               :drakma)
   :components ((:file "packages")
                (:file "web" :depends-on ("packages"))))

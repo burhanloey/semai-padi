@@ -30,7 +30,7 @@
   "When the process is no longer alive, remove it from the hash table."
   (flet ((remove-dead-process (pid process)
            (format t "~a: ~a~&" pid process)
-           (unless (uiop:process-alive-p process)
+           (unless (process-alive-p process)
              (remhash pid *processes*))))
     (maphash #'remove-dead-process *processes*)))
 
@@ -41,13 +41,13 @@
                      (size "100m"))
   "Split file using 7zip. SIZE is a string including the unit [b|k|m|g]."
   (let* ((dirpath (merge-pathnames dirname +download-path+) )
-         (process (uiop:launch-program (list "7z" "a"
-                                             (format nil "-v~a" size)
-                                             (format nil "~a.7z" archivename)
-                                             filename)
-                                       :directory dirpath))
+         (process (launch-program (list "7z" "a"
+                                        (format nil "-v~a" size)
+                                        (format nil "~a.7z" archivename)
+                                        filename)
+                                  :directory dirpath))
          (key (format nil "~a-~a"
-                      (uiop:process-info-pid process)
+                      (process-info-pid process)
                       (get-universal-time))))
     (setf (gethash key *processes*) process)))
 
