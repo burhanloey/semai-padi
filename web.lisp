@@ -40,7 +40,8 @@
                      (dirname "")
                      (size "100m"))
   "Split file using 7zip. SIZE is a string including the unit [b|k|m|g]."
-  (let* ((dirpath (merge-pathnames dirname +download-path+) )
+  (let* ((dirpath (merge-pathnames (format nil "~a/" dirname)
+                                   +download-path+) )
          (process (launch-program (list "7z" "a"
                                         (format nil "-v~a" size)
                                         (format nil "~a.7z" archivename)
