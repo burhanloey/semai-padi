@@ -37,11 +37,12 @@
 (defun split-file (filename
                    &key
                      (archivename (pathname-name filename))
-                     (dirname "")
-                     (size "100m"))
+                     (size "100m")
+                     dirname)
   "Split file using 7zip. SIZE is a string including the unit [b|k|m|g]."
-  (let* ((dirpath (merge-pathnames (format nil "~a/" dirname)
-                                   +download-path+) )
+  (let* ((dirpath (if dirname
+                      (merge-pathnames (format nil "~a/" dirname) +download-path+)
+                      +download-path+))
          (process (launch-program (list "7z" "a"
                                         (format nil "-v~a" size)
                                         (format nil "~a.7z" archivename)
